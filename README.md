@@ -1,1 +1,31 @@
 # PasswordGenerator
+
+import random
+import string
+
+def generate_password(length=12, use_letters=True, use_digits=True, use_symbols=True):
+    characters = ''
+    
+    if use_letters:
+        characters += string.ascii_letters
+    if use_digits:
+        characters += string.digits
+    if use_symbols:
+        characters += string.punctuation
+
+    if not characters:
+        raise ValueError("No character types selected.")
+
+    password = ''.join(random.choice(characters) for _ in range(length))
+    return password
+
+# Customize password settings
+password_length = 16
+include_letters = True
+include_digits = True
+include_symbols = True
+
+# Generate and print the password
+print("⚡️ Welcome to Jesuha's Password Generator ⚡️\n")
+generated_password = generate_password(password_length, include_letters, include_digits, include_symbols)
+print(f"✅ Generated password: {generated_password}")
